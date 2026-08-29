@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>椎名宗一郎 ｜ 食品コンサル物語 The Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #1C1510;
+  --brown:  #2A1F14;
+  --gold:   #C9A84C;
+  --gold2:  #E8C96A;
+  --cream:  #F2EDE4;
+  --cream2: #F8F5F0;
+  --text:   #2C2218;
+  --gray:   #7A6E65;
+  --border: #D4C9B8;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: var(--dark);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+.nav-logo span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.15em;
+  display: block;
+  font-weight: 300;
+}
+nav ul { display: flex; list-style: none; gap: 2.5rem; }
+nav a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  padding: 8rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+/* セピア調の背景グラデーション */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 30% 80%, rgba(42,31,20,0.6) 0%, transparent 100%);
+}
+/* 表紙のシルエットを想起させる縦ライン */
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 8%;
+  top: 15%;
+  width: 1px;
+  height: 70%;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.hero-series {
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.hero-title-en {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+.hero-title-ja {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.2em;
+  margin-bottom: 2.5rem;
+}
+.hero-catch {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.9;
+  margin-bottom: 0.8rem;
+  border-left: 2px solid var(--gold);
+  padding-left: 1.2rem;
+}
+.hero-catch em { font-style: normal; color: var(--gold2); }
+.hero-sub {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 2;
+  margin-bottom: 2.8rem;
+  padding-left: 1.2rem;
+}
+.hero-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1.2rem;
+}
+.hero-author-line {
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.hero-author-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.15em;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  margin-top: 2.5rem;
+  margin-left: 1.2rem;
+  transition: background 0.25s, color 0.25s;
+}
+.hero-cta:hover { background: var(--gold); color: var(--dark); }
+
+/* ── SECTION BASE ── */
+section { padding: 6rem 3rem; }
+.section-inner { max-width: 900px; margin: 0 auto; }
+.section-header { margin-bottom: 3rem; }
+.section-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+.gold-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 1rem;
+}
+
+/* ── PROFILE ── */
+#profile { background: var(--cream2); }
+.profile-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.profile-card {
+  background: var(--dark);
+  padding: 2.5rem 1.8rem;
+  text-align: center;
+}
+.profile-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.profile-card-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.profile-card-rule {
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.2rem;
+  opacity: 0.5;
+}
+.profile-card-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.85);
+  display: block;
+  margin-bottom: 1rem;
+}
+.profile-card-desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.9;
+}
+.profile-text {}
+.profile-quote {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1rem;
+  color: var(--text);
+  border-left: 2px solid var(--gold);
+  padding-left: 1.2rem;
+  line-height: 1.9;
+  margin-bottom: 1.8rem;
+}
+.profile-body p {
+  font-size: 0.92rem;
+  line-height: 2;
+  color: #4A3D30;
+  margin-bottom: 1.1rem;
+}
+.profile-cred {
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  line-height: 2;
+}
+
+/* ── SERIES ── */
+#series { background: var(--cream); }
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.series-card {
+  background: var(--cream2);
+  border: 1px solid var(--border);
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.25s, box-shadow 0.25s;
+  overflow: hidden;
+}
+.series-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(42,31,20,0.12);
+}
+.card-header {
+  background: var(--dark);
+  padding: 0.7rem 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-season-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.card-status {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  padding: 0.18rem 0.6rem;
+  border: 1px solid;
+}
+.card-status.done    { border-color: var(--gold); color: var(--gold); }
+.card-status.ongoing { border-color: #B8954A; color: #B8954A; }
+.card-status.planned { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.35); }
+.card-body { padding: 1.5rem 1.5rem 1.8rem; }
+.card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+.card-sub {
+  font-size: 0.78rem;
+  color: var(--gray);
+  line-height: 1.75;
+}
+.card-arrow {
+  display: block;
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--gold);
+  margin-top: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* ── NOTE ── */
+#note-link { background: var(--brown); }
+#note-link .section-eyebrow { color: var(--gold); }
+#note-link .section-title { color: rgba(255,255,255,0.88); }
+#note-link .gold-rule { background: var(--gold); opacity: 0.5; }
+.note-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.note-text p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 2;
+  max-width: 480px;
+}
+.note-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  transition: background 0.25s, color 0.25s;
+  flex-shrink: 0;
+}
+.note-btn:hover { background: var(--gold); color: var(--dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  padding: 3rem 3rem 2rem;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.footer-catch {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.12em;
+}
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.2rem;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.2rem; }
+  nav ul { gap: 1.2rem; }
+  section { padding: 4rem 1.5rem; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .profile-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .note-inner { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    TheStart
+    <span>食品コンサル物語</span>
+  </div>
+  <ul>
+    <li><a href="#profile">著者</a></li>
+    <li><a href="#series">作品</a></li>
+    <li><a href="#note-link">note</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-series">Food Consul Story</p>
+    <h1 class="hero-title-en">TheStart</h1>
+    <p class="hero-title-ja">食品コンサル物語</p>
+    <p class="hero-catch">
+      食品安全にゴールはない。<br>
+      <em>あるのは、スタートだけだ。</em>
+    </p>
+    <p class="hero-sub">
+      物語で学べる食品コンサルの世界<br>
+      〜HACCPから現場改善、商品開発まで〜
+    </p>
+    <div class="hero-author">
+      <div class="hero-author-line"></div>
+      <span class="hero-author-name">著者：椎名 宗一郎</span>
+    </div>
+    <a href="#series" class="hero-cta">
+      作品を読む
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">About the Author</span>
+      <h2 class="section-title">著者プロフィール</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="profile-wrap">
+      <div class="profile-card">
+        <span class="profile-card-title">TheStart</span>
+        <span class="profile-card-sub">シリーズ 著者</span>
+        <div class="profile-card-rule"></div>
+        <span class="profile-card-name">椎名 宗一郎</span>
+        <p class="profile-card-desc">
+          食品安全コンサルタント<br>
+          HACCP ／ ISO 22000<br>
+          FSSC 22000<br>
+          6次産業化支援
+        </p>
+      </div>
+      <div class="profile-text">
+        <p class="profile-quote">
+          「感覚は経験だ。だが管理はデータだ」
+        </p>
+        <div class="profile-body">
+          <p>
+            北海道大学農学部を卒業後、食品加工の現場に入り20年以上。
+            HACCP導入支援・ISO 22000審査・FSSC 22000取得支援など、
+            食品工場の現場に寄り添うコンサルタントとして活動しています。
+          </p>
+          <p>
+            小説シリーズ「The Start」は、現場で実際に起きる変化と
+            食品安全の考え方を、物語として届けるために生まれました。
+            北海道の水産加工場、札幌の洋菓子店、酪農家……
+            それぞれの現場に伴走した経験が、すべての物語の土台にあります。
+          </p>
+          <p>
+            「食品安全にゴールはない。あるのはスタートだけだ」——
+            これが、すべての現場で伝え続けている言葉です。
+          </p>
+        </div>
+        <p class="profile-cred">
+          IRCA認定食品安全審査員　／　JUSE登録 ISO 22000主任審査員
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES -->
+<section id="series">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Works</span>
+      <h2 class="section-title">作品一覧</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="series-grid">
+
+      <a class="series-card" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <div class="card-header">
+          <span class="card-season-label">Season 1</span>
+          <span class="card-status done">完結</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">水産編<br>〜HACCP挑戦物語〜</p>
+          <p class="card-sub">北海道の水産加工会社で突然HACCP担当者に指名された山田広志。無口なコンサルタント・椎名宗一郎との挑戦が始まる。</p>
+          <span class="card-arrow">note で読む →</span>
+        </div>
+      </a>
+
+      <a class="series-card" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <div class="card-header">
+          <span class="card-season-label">Season 2</span>
+          <span class="card-status ongoing">Kindle近日発売</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">スイーツ編<br>〜札幌栗田洋菓子店、グランデパートへの道〜</p>
+          <p class="card-sub">創業40年の老舗洋菓子店がデパート地下への出店に挑む。職人の誇りと食品安全の基準の間で揺れる人々の物語。</p>
+          <span class="card-arrow">詳細を見る →</span>
+        </div>
+      </a>
+
+      <a class="series-card" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <div class="card-header">
+          <span class="card-season-label">Season 3</span>
+          <span class="card-status ongoing">note公開中</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">牧場編<br>〜クラークファームの夜明け〜</p>
+          <p class="card-sub">北海道の2つの牧場が手を組み、6次産業化に挑む。株式会社クラークファームの誕生と、食品安全の新たな物語。</p>
+          <span class="card-arrow">note で読む →</span>
+        </div>
+      </a>
+
+      <a class="series-card" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <div class="card-header">
+          <span class="card-season-label">Season 4〜</span>
+          <span class="card-status planned">続刊予定</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">クラークファーム編<br>次女さくら編 他</p>
+          <p class="card-sub">HACCP 7原則12手順、添加物の真実、賞味期限の決め方……食品安全のあらゆる現場を物語で描くシリーズ。</p>
+          <span class="card-arrow">続報をお待ちください</span>
+        </div>
+      </a>
+
+      <a class="series-card" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <div class="card-header">
+          <span class="card-season-label">実務編</span>
+          <span class="card-status ongoing">公開中</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">食品コンサル物語 実務編<br>FSSC 22000 V7移行完全ガイド</p>
+          <p class="card-sub">2028年4月30日の移行期限に向けた実践解説。4フェーズのアクションプランをわかりやすく解説します。</p>
+          <span class="card-arrow">note で読む →</span>
+        </div>
+      </a>
+
+      <a class="series-card" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <div class="card-header">
+          <span class="card-season-label">番外編</span>
+          <span class="card-status done">公開中</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">スナックで学ぶ食品安全<br>〜HACCP・ISO・FSSC・GFSI、全部教えます〜</p>
+          <p class="card-sub">深夜のスナックで、マスターと椎名先生が語り合う読み切り番外編。食品安全規格の全体像を一晩で学べる。</p>
+          <span class="card-arrow">note で読む →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- NOTE -->
+<section id="note-link">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Read on note</span>
+      <h2 class="section-title">noteで読む</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="note-inner">
+      <div class="note-text">
+        <p>
+          シリーズ最新話・実務解説記事・番外編を<br>
+          noteで随時公開中。<br>
+          フォローして最新話をお見逃しなく。
+        </p>
+      </div>
+      <a class="note-btn" href="https://note.com/the_start" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2V4a2 2 0 00-2-2z"/></svg>
+        note を開く
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">TheStart</span>
+  <p class="footer-catch">「さぁ、これからがスタートだ！」— 椎名宗一郎</p>
+  <p class="footer-copy">© 椎名宗一郎 ／ 食品コンサル物語 The Start　All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
