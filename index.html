@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>椎名宗一郎 ｜ 食品コンサル物語 The Start</title>
+<title id="page-title">椎名宗一郎 ｜ 食品コンサル物語 The Start</title>
+<meta id="page-desc" name="description" content="食品安全コンサルタント・椎名宗一郎による小説シリーズ「TheStart」公式サイト。HACCP・ISO22000・FSSC22000をテーマにした物語と実務ガイドを公開中。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 
 :root {
   --dark:   #1C1510;
@@ -64,6 +66,19 @@ nav a {
   transition: color 0.2s;
 }
 nav a:hover { color: var(--gold); }
+
+.lang-toggle{display:flex;align-items:center;gap:2px;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px;}
+.lang-toggle button{
+  appearance:none;border:none;background:transparent;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;font-size:0.68rem;letter-spacing:.05em;
+  color:rgba(255,255,255,.6);padding:0.4rem 0.85rem;border-radius:16px;transition:background .15s ease,color .15s ease;
+}
+.lang-toggle button.active{background:var(--gold);color:var(--dark);font-weight:500;}
+.lang-toggle button:hover:not(.active){color:#fff;}
+.nav-right{display:flex;align-items:center;gap:2.5rem;}
+@media (max-width: 700px){
+  .nav-right{gap:1.2rem;}
+}
 
 /* ── HERO ── */
 .hero {
@@ -414,13 +429,20 @@ footer {
 <nav>
   <div class="nav-logo">
     TheStart
-    <span>食品コンサル物語</span>
+    <span class="i18n-ja">食品コンサル物語</span>
+    <span class="i18n-en" hidden>A Food Consulting Story</span>
   </div>
-  <ul>
-    <li><a href="#profile">著者</a></li>
-    <li><a href="#series">作品</a></li>
-    <li><a href="#note-link">note</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#profile"><span class="i18n-ja">著者</span><span class="i18n-en" hidden>Author</span></a></li>
+      <li><a href="#series"><span class="i18n-ja">作品</span><span class="i18n-en" hidden>Works</span></a></li>
+      <li><a href="#note-link">note</a></li>
+    </ul>
+    <div class="lang-toggle" role="group" aria-label="Language / 言語切替">
+      <button type="button" id="btn-lang-ja" class="active" onclick="setLang('ja')">日本語</button>
+      <button type="button" id="btn-lang-en" onclick="setLang('en')">English</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -428,21 +450,32 @@ footer {
   <div class="hero-inner">
     <p class="hero-series">Food Consul Story</p>
     <h1 class="hero-title-en">TheStart</h1>
-    <p class="hero-title-ja">食品コンサル物語</p>
-    <p class="hero-catch">
+    <p class="hero-title-ja i18n-ja">食品コンサル物語</p>
+    <p class="hero-title-ja i18n-en" hidden>A Food Consulting Story</p>
+    <p class="hero-catch i18n-ja">
       食品安全にゴールはない。<br>
       <em>あるのは、スタートだけだ。</em>
     </p>
-    <p class="hero-sub">
+    <p class="hero-catch i18n-en" hidden>
+      There is no finish line in food safety.<br>
+      <em>There is only the start.</em>
+    </p>
+    <p class="hero-sub i18n-ja">
       物語で学べる食品コンサルの世界<br>
       〜HACCPから現場改善、商品開発まで〜
     </p>
+    <p class="hero-sub i18n-en" hidden>
+      A world of food consulting you can learn through story<br>
+      — from HACCP to on-the-floor improvement and product development —
+    </p>
     <div class="hero-author">
       <div class="hero-author-line"></div>
-      <span class="hero-author-name">著者：椎名 宗一郎</span>
+      <span class="hero-author-name i18n-ja">著者：椎名 宗一郎</span>
+      <span class="hero-author-name i18n-en" hidden>Author: Soichiro Shiina</span>
     </div>
     <a href="#series" class="hero-cta">
-      作品を読む
+      <span class="i18n-ja">作品を読む</span>
+      <span class="i18n-en" hidden>Read the Series</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
@@ -453,27 +486,39 @@ footer {
   <div class="section-inner">
     <div class="section-header">
       <span class="section-eyebrow">About the Author</span>
-      <h2 class="section-title">著者プロフィール</h2>
+      <h2 class="section-title i18n-ja">著者プロフィール</h2>
+      <h2 class="section-title i18n-en" hidden>Author Profile</h2>
       <div class="gold-rule"></div>
     </div>
     <div class="profile-wrap">
       <div class="profile-card">
         <span class="profile-card-title">TheStart</span>
-        <span class="profile-card-sub">シリーズ 著者</span>
+        <span class="profile-card-sub i18n-ja">シリーズ 著者</span>
+        <span class="profile-card-sub i18n-en" hidden>Series Author</span>
         <div class="profile-card-rule"></div>
-        <span class="profile-card-name">椎名 宗一郎</span>
-        <p class="profile-card-desc">
+        <span class="profile-card-name i18n-ja">椎名 宗一郎</span>
+        <span class="profile-card-name i18n-en" hidden>Soichiro Shiina</span>
+        <p class="profile-card-desc i18n-ja">
           食品安全コンサルタント<br>
           HACCP ／ ISO 22000<br>
           FSSC 22000<br>
           6次産業化支援
         </p>
+        <p class="profile-card-desc i18n-en" hidden>
+          Food Safety Consultant<br>
+          HACCP / ISO 22000<br>
+          FSSC 22000<br>
+          Sixth-Industrialization Support
+        </p>
       </div>
       <div class="profile-text">
-        <p class="profile-quote">
+        <p class="profile-quote i18n-ja">
           「感覚は経験だ。だが管理はデータだ」
         </p>
-        <div class="profile-body">
+        <p class="profile-quote i18n-en" hidden>
+          &ldquo;Instinct comes from experience. But management comes from data.&rdquo;
+        </p>
+        <div class="profile-body i18n-ja">
           <p>
             食品加工の現場に入り20年以上。
             HACCP導入支援・ISO 22000審査・FSSC 22000取得支援など、
@@ -490,6 +535,23 @@ footer {
             これが、すべての現場で伝え続けている言葉です。
           </p>
         </div>
+        <div class="profile-body i18n-en" hidden>
+          <p>
+            I've worked on the food processing floor for over 20 years. I work as a consultant who
+            stays close to the realities of the food plant floor — supporting HACCP implementation,
+            ISO 22000 audits, FSSC 22000 certification, and more.
+          </p>
+          <p>
+            The novel series &ldquo;The Start&rdquo; was born to deliver the real changes that happen
+            on the floor, and the thinking behind food safety, in story form. A seafood processing
+            plant in Hokkaido, a confectionery in Sapporo, dairy farmers&hellip; my experience walking
+            alongside each of these sites forms the foundation of every story.
+          </p>
+          <p>
+            &ldquo;There is no finish line in food safety. There is only the start.&rdquo; That's the
+            message I keep bringing to every site I work with.
+          </p>
+        </div>
         <p class="profile-cred">
           ISO 22000 ／ FSSC 22000 ／ HACCP
         </p>
@@ -503,7 +565,8 @@ footer {
   <div class="section-inner">
     <div class="section-header">
       <span class="section-eyebrow">Works</span>
-      <h2 class="section-title">作品一覧</h2>
+      <h2 class="section-title i18n-ja">作品一覧</h2>
+      <h2 class="section-title i18n-en" hidden>The Series</h2>
       <div class="gold-rule"></div>
     </div>
     <div class="series-grid">
@@ -511,81 +574,110 @@ footer {
       <a class="series-card" href="https://note.com/the_start/n/n6598d3188fe5?magazine_key=ma5bc7973e9be" target="_blank" rel="noopener">
         <div class="card-header">
           <span class="card-season-label">Season 1</span>
-          <span class="card-status done">完結</span>
+          <span class="card-status done i18n-ja">完結</span>
+          <span class="card-status done i18n-en" hidden>Completed</span>
         </div>
         <div class="card-body">
-          <p class="card-title">水産編<br>〜HACCP挑戦物語〜</p>
-          <p class="card-sub">北海道の水産加工会社で突然HACCP担当者に指名された山田広志。無口なコンサルタント・椎名宗一郎との挑戦が始まる。</p>
-          <span class="card-arrow">note で読む →</span>
+          <p class="card-title i18n-ja">水産編<br>〜HACCP挑戦物語〜</p>
+          <p class="card-title i18n-en" hidden>Seafood Edition<br>— A HACCP Challenge Story —</p>
+          <p class="card-sub i18n-ja">北海道の水産加工会社で突然HACCP担当者に指名された山田広志。無口なコンサルタント・椎名宗一郎との挑戦が始まる。</p>
+          <p class="card-sub i18n-en" hidden>Hiroshi Yamada is suddenly named HACCP lead at a Hokkaido seafood processor. His challenge begins alongside the taciturn consultant, Soichiro Shiina.</p>
+          <span class="card-arrow i18n-ja">note で読む →</span>
+          <span class="card-arrow i18n-en" hidden>Read on note →</span>
         </div>
       </a>
 
       <div class="series-card" style="cursor:default;">
         <div class="card-header">
           <span class="card-season-label">Season 2</span>
-          <span class="card-status done">Kindle発売中</span>
+          <span class="card-status done i18n-ja">Kindle発売中</span>
+          <span class="card-status done i18n-en" hidden>Available on Kindle</span>
         </div>
         <div class="card-body">
-          <p class="card-title">スイーツ編<br>〜札幌栗田洋菓子店、グランデパートへの道〜</p>
-          <p class="card-sub">創業40年の老舗洋菓子店がデパート地下への出店に挑む。職人の誇りと食品安全の基準の間で揺れる人々の物語。</p>
+          <p class="card-title i18n-ja">スイーツ編<br>〜札幌栗田洋菓子店、グランデパートへの道〜</p>
+          <p class="card-title i18n-en" hidden>Sweets Edition<br>— Sapporo Kurita Confectionery's Road to the Grand Department Store —</p>
+          <p class="card-sub i18n-ja">創業40年の老舗洋菓子店がデパート地下への出店に挑む。職人の誇りと食品安全の基準の間で揺れる人々の物語。</p>
+          <p class="card-sub i18n-en" hidden>A 40-year-old confectionery takes on opening a shop in a department store's basement food hall. A story of people caught between an artisan's pride and food safety standards.</p>
           <a href="https://www.amazon.co.jp/dp/B0HH917XTC" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#C9A84C;color:#1C1510;padding:0.55rem 1.2rem;font-size:0.78rem;letter-spacing:0.08em;text-decoration:none;margin-top:0.8rem;font-weight:500;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
-            📘 Kindleで購入する
+            <span class="i18n-ja">📘 Kindleで購入する</span>
+            <span class="i18n-en" hidden>📘 Buy on Kindle</span>
           </a>
+          <p class="i18n-en" hidden style="font-size:0.66rem;color:var(--gray);margin-top:0.5rem;">(Japanese text only)</p>
         </div>
       </div>
 
       <a class="series-card" href="https://note.com/the_start/n/n98600085ec81" target="_blank" rel="noopener">
         <div class="card-header">
           <span class="card-season-label">Season 3</span>
-          <span class="card-status ongoing">note公開中</span>
+          <span class="card-status ongoing i18n-ja">note公開中</span>
+          <span class="card-status ongoing i18n-en" hidden>Publishing on note</span>
         </div>
         <div class="card-body">
-          <p class="card-title">牧場編<br>〜クラークファームの夜明け〜</p>
-          <p class="card-sub">北海道の2つの牧場が手を組み、6次産業化に挑む。株式会社クラークファームの誕生と、食品安全の新たな物語。</p>
-          <span class="card-arrow">note で読む →</span>
+          <p class="card-title i18n-ja">牧場編<br>〜クラークファームの夜明け〜</p>
+          <p class="card-title i18n-en" hidden>Ranch Edition<br>— Dawn of Clark Farm —</p>
+          <p class="card-sub i18n-ja">北海道の2つの牧場が手を組み、6次産業化に挑む。株式会社クラークファームの誕生と、食品安全の新たな物語。</p>
+          <p class="card-sub i18n-en" hidden>Two ranches in Hokkaido join forces to pursue sixth-industrialization. The birth of Clark Farm Co., Ltd., and a new story of food safety.</p>
+          <span class="card-arrow i18n-ja">note で読む →</span>
+          <span class="card-arrow i18n-en" hidden>Read on note →</span>
         </div>
       </a>
 
       <a class="series-card" href="https://note.com/shiina_soichiro" target="_blank" rel="noopener">
         <div class="card-header">
           <span class="card-season-label">Season 4〜</span>
-          <span class="card-status planned">続刊予定</span>
+          <span class="card-status planned i18n-ja">続刊予定</span>
+          <span class="card-status planned i18n-en" hidden>Coming Soon</span>
         </div>
         <div class="card-body">
-          <p class="card-title">クラークファーム編<br>次女さくら編 他</p>
-          <p class="card-sub">HACCP 7原則12手順、添加物の真実、賞味期限の決め方……食品安全のあらゆる現場を物語で描くシリーズ。</p>
-          <span class="card-arrow">続報をお待ちください</span>
+          <p class="card-title i18n-ja">クラークファーム編<br>次女さくら編 他</p>
+          <p class="card-title i18n-en" hidden>The Clark Farm Chapters<br>The Second Daughter Sakura, and More</p>
+          <p class="card-sub i18n-ja">HACCP 7原則12手順、添加物の真実、賞味期限の決め方……食品安全のあらゆる現場を物語で描くシリーズ。</p>
+          <p class="card-sub i18n-en" hidden>The 7 principles and 12 steps of HACCP, the truth about food additives, how best-before dates are set&hellip; a series that portrays every corner of food safety through story.</p>
+          <span class="card-arrow i18n-ja">続報をお待ちください</span>
+          <span class="card-arrow i18n-en" hidden>Stay tuned for updates</span>
         </div>
       </a>
 
       <div class="series-card" style="cursor:default;">
         <div class="card-header">
-          <span class="card-season-label">実務編</span>
-          <span class="card-status done">Kindle・紙版発売中</span>
+          <span class="card-season-label i18n-ja">実務編</span>
+          <span class="card-season-label i18n-en" hidden>Practical Edition</span>
+          <span class="card-status done i18n-ja">Kindle・紙版発売中</span>
+          <span class="card-status done i18n-en" hidden>Available in Kindle &amp; Print</span>
         </div>
         <div class="card-body">
-          <p class="card-title">食品コンサル物語 実務編<br>FSSC 22000 V7移行完全ガイド</p>
-          <p class="card-sub">2028年4月30日の移行期限に向けた実践解説。4フェーズのアクションプランをわかりやすく解説します。V6認証企業のための実務対応とチェックリスト。</p>
+          <p class="card-title i18n-ja">食品コンサル物語 実務編<br>FSSC 22000 V7移行完全ガイド</p>
+          <p class="card-title i18n-en" hidden>Food Consulting Story, Practical Edition<br>The Complete Guide to FSSC 22000 V7 Migration</p>
+          <p class="card-sub i18n-ja">2028年4月30日の移行期限に向けた実践解説。4フェーズのアクションプランをわかりやすく解説します。V6認証企業のための実務対応とチェックリスト。</p>
+          <p class="card-sub i18n-en" hidden>A practical explanation for the April 30, 2028 migration deadline, walking you clearly through a four-phase action plan. Practical guidance and checklists for organizations already certified to V6.</p>
           <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem;">
             <a href="https://www.amazon.co.jp/dp/B0HHW88XP7" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#C9A84C;color:#1C1510;padding:0.55rem 1.2rem;font-size:0.78rem;letter-spacing:0.08em;text-decoration:none;font-weight:500;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
-              📘 Kindle版で購入する
+              <span class="i18n-ja">📘 Kindle版で購入する</span>
+              <span class="i18n-en" hidden>📘 Buy the Kindle Edition (Japanese)</span>
             </a>
             <a href="https://www.amazon.co.jp/dp/B0HHWVKBG1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:#C9A84C;border:1px solid #C9A84C;padding:0.55rem 1.2rem;font-size:0.78rem;letter-spacing:0.08em;text-decoration:none;font-weight:500;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
-              📗 ペーパーバック版で購入する
+              <span class="i18n-ja">📗 ペーパーバック版で購入する</span>
+              <span class="i18n-en" hidden>📗 Buy the Paperback Edition (Japanese)</span>
             </a>
           </div>
+          <p class="i18n-en" hidden style="font-size:0.66rem;color:var(--gray);margin-top:0.6rem;line-height:1.7;">An English edition, <em>FSSC22000 V7 Migration Guide</em>, is on its way — check back soon.</p>
         </div>
       </div>
 
       <a class="series-card" href="https://note.com/the_start/n/n958a64438663" target="_blank" rel="noopener">
         <div class="card-header">
-          <span class="card-season-label">番外編</span>
-          <span class="card-status done">公開中</span>
+          <span class="card-season-label i18n-ja">番外編</span>
+          <span class="card-season-label i18n-en" hidden>Bonus Chapter</span>
+          <span class="card-status done i18n-ja">公開中</span>
+          <span class="card-status done i18n-en" hidden>Now Available</span>
         </div>
         <div class="card-body">
-          <p class="card-title">スナックで学ぶ食品安全<br>〜HACCP・ISO・FSSC・GFSI、全部教えます〜</p>
-          <p class="card-sub">深夜のスナックで、マスターと椎名先生が語り合う読み切り番外編。食品安全規格の全体像を一晩で学べる。</p>
-          <span class="card-arrow">note で読む →</span>
+          <p class="card-title i18n-ja">スナックで学ぶ食品安全<br>〜HACCP・ISO・FSSC・GFSI、全部教えます〜</p>
+          <p class="card-title i18n-en" hidden>Food Safety Lessons at the Snack Bar<br>— HACCP, ISO, FSSC, GFSI: I'll Teach You All of It —</p>
+          <p class="card-sub i18n-ja">深夜のスナックで、マスターと椎名先生が語り合う読み切り番外編。食品安全規格の全体像を一晩で学べる。</p>
+          <p class="card-sub i18n-en" hidden>A standalone bonus chapter where the bar's master and Sensei Shiina talk long into the night. Learn the big picture of food safety standards in one sitting.</p>
+          <span class="card-arrow i18n-ja">note で読む →</span>
+          <span class="card-arrow i18n-en" hidden>Read on note →</span>
         </div>
       </a>
 
@@ -598,20 +690,27 @@ footer {
   <div class="section-inner">
     <div class="section-header">
       <span class="section-eyebrow">Read on note</span>
-      <h2 class="section-title">noteで読む</h2>
+      <h2 class="section-title i18n-ja">noteで読む</h2>
+      <h2 class="section-title i18n-en" hidden>Read on note</h2>
       <div class="gold-rule"></div>
     </div>
     <div class="note-inner">
       <div class="note-text">
-        <p>
+        <p class="i18n-ja">
           シリーズ最新話・実務解説記事・番外編を<br>
           noteで随時公開中。<br>
           フォローして最新話をお見逃しなく。
         </p>
+        <p class="i18n-en" hidden>
+          New episodes, practical explainer articles, and bonus chapters<br>
+          are published regularly on note.<br>
+          Follow along so you never miss the latest installment.
+        </p>
       </div>
       <a class="note-btn" href="https://note.com/shiina_soichiro" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2V4a2 2 0 00-2-2z"/></svg>
-        note を開く
+        <span class="i18n-ja">note を開く</span>
+        <span class="i18n-en" hidden>Open note</span>
       </a>
     </div>
   </div>
@@ -620,9 +719,60 @@ footer {
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">TheStart</span>
-  <p class="footer-catch">「さぁ、これからがスタートだ！」— 椎名宗一郎</p>
-  <p class="footer-copy">© 椎名宗一郎 ／ 食品コンサル物語 The Start　All Rights Reserved</p>
+  <p class="footer-catch i18n-ja">「さぁ、これからがスタートだ！」— 椎名宗一郎</p>
+  <p class="footer-catch i18n-en" hidden>&ldquo;All right, this is where it starts!&rdquo; — Soichiro Shiina</p>
+  <p class="footer-copy i18n-ja">© 椎名宗一郎 ／ 食品コンサル物語 The Start　All Rights Reserved</p>
+  <p class="footer-copy i18n-en" hidden>&copy; Soichiro Shiina / Food Consulting Story: The Start. All Rights Reserved.</p>
 </footer>
+
+<script>
+(function(){
+  var TITLE = {
+    ja: '椎名宗一郎 ｜ 食品コンサル物語 The Start',
+    en: 'Soichiro Shiina | Food Consulting Story: The Start'
+  };
+  var DESC = {
+    ja: '食品安全コンサルタント・椎名宗一郎による小説シリーズ「TheStart」公式サイト。HACCP・ISO22000・FSSC22000をテーマにした物語と実務ガイドを公開中。',
+    en: 'Official site for “TheStart,” a novel series by food safety consultant Soichiro Shiina — stories and practical guides built around HACCP, ISO 22000, and FSSC 22000.'
+  };
+
+  function setLang(lang){
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'ja');
+
+    var jaEls = document.querySelectorAll('.i18n-ja');
+    var enEls = document.querySelectorAll('.i18n-en');
+    for (var i = 0; i < jaEls.length; i++) jaEls[i].hidden = (lang === 'en');
+    for (var j = 0; j < enEls.length; j++) enEls[j].hidden = (lang !== 'en');
+
+    document.getElementById('btn-lang-ja').classList.toggle('active', lang !== 'en');
+    document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
+
+    document.getElementById('page-title').textContent = TITLE[lang];
+    document.getElementById('page-desc').setAttribute('content', DESC[lang]);
+    document.title = TITLE[lang];
+
+    try {
+      var params = new URLSearchParams(window.location.search);
+      params.set('lang', lang);
+      var newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
+      window.history.replaceState(null, '', newUrl);
+    } catch (e) { /* no-op if History API unavailable */ }
+  }
+  window.setLang = setLang;
+
+  var initial = 'ja';
+  try {
+    var qp = new URLSearchParams(window.location.search).get('lang');
+    if (qp === 'en' || qp === 'ja') {
+      initial = qp;
+    } else if ((navigator.language || '').toLowerCase().indexOf('en') === 0) {
+      initial = 'en';
+    }
+  } catch (e) { /* keep default */ }
+
+  setLang(initial);
+})();
+</script>
 
 </body>
 </html>
