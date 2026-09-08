@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>読者特典｜FSSC22000 V7移行ガイド ギャップ分析テンプレート - TheStart 食品コンサル物語</title>
-<meta name="description" content="『食品コンサル物語 実務編 FSSC22000 V7移行完全ガイド』読者特典。実務でそのまま使えるギャップ分析エクセルテンプレートを無料でダウンロードいただけます。">
+<title id="page-title">読者特典｜FSSC22000 V7移行ガイド ギャップ分析テンプレート - TheStart 食品コンサル物語</title>
+<meta id="page-desc" name="description" content="『食品コンサル物語 実務編 FSSC22000 V7移行完全ガイド』読者特典。実務でそのまま使えるギャップ分析エクセルテンプレートを無料でダウンロードいただけます。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;0,600;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --dark-bg:#1c1510;
@@ -19,6 +19,7 @@
     --gold-soft:#b8954a;
   }
   *{box-sizing:border-box;}
+  [hidden]{display:none !important;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--cream);
@@ -27,16 +28,28 @@
     font-weight:300;
     line-height:1.9;
   }
+  body[data-lang="en"]{font-family:"Lora","Noto Sans JP",serif;}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:880px;margin:0 auto;padding:0 32px;}
+
+  /* language toggle */
+  .lang-toggle{display:flex;align-items:center;gap:2px;margin-left:28px;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px;}
+  .lang-toggle button{
+    appearance:none;border:none;background:transparent;cursor:pointer;
+    font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:.05em;
+    color:rgba(255,255,255,.6);padding:6px 14px;border-radius:16px;transition:background .15s ease,color .15s ease;
+  }
+  .lang-toggle button.active{background:var(--gold);color:var(--dark-bg);font-weight:500;}
+  .lang-toggle button:hover:not(.active){color:#fff;}
 
   header{
     background:var(--dark-bg);
     padding:22px 0;
   }
-  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
   .logo{font-family:"Playfair Display",serif;font-size:20px;color:var(--gold);letter-spacing:.02em;}
   .logo small{display:block;font-family:"Noto Sans JP",sans-serif;font-weight:300;font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-top:2px;}
+  .nav-right{display:flex;align-items:center;}
   nav a{margin-left:28px;font-size:13px;color:rgba(255,255,255,.65);letter-spacing:.04em;}
   nav a:hover{color:var(--gold);}
 
@@ -95,6 +108,8 @@
     margin:0 0 36px;
     text-align:center;
   }
+  body[data-lang="en"] .section-title{font-family:"Lora",serif;}
+  body[data-lang="en"] .hero h1{font-family:"Lora",serif;font-style:italic;}
 
   .about-book{
     background:var(--cream-2);
@@ -113,6 +128,7 @@
     font-size:17px;
     margin:0 0 10px;
   }
+  body[data-lang="en"] .about-book h3{font-family:"Lora",serif;}
   .about-book p{font-size:14px;color:#4a3f30;margin:0;}
 
   .contents-list{
@@ -185,56 +201,94 @@
     .hero h1{font-size:30px;}
     .about-book .grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
+    header .wrap{justify-content:center;text-align:center;}
+    .lang-toggle{margin-left:0;}
   }
 </style>
 </head>
-<body>
+<body data-lang="ja">
 
 <header>
   <div class="wrap">
-    <a class="logo" href="https://foodconsultant-start.com/">TheStart<small>食品コンサル物語</small></a>
-    <nav>
-      <a href="https://foodconsultant-start.com/">ホーム</a>
-      <a href="https://foodconsultant-start.com/#series">作品</a>
-      <a href="https://note.com/shiina_soichiro">note</a>
-    </nav>
+    <a class="logo" href="https://foodconsultant-start.com/">TheStart<small class="i18n-ja">食品コンサル物語</small><small class="i18n-en" hidden>A Food Consulting Story</small></a>
+    <div class="nav-right">
+      <nav>
+        <a href="https://foodconsultant-start.com/"><span class="i18n-ja">ホーム</span><span class="i18n-en" hidden>Home</span></a>
+        <a href="https://foodconsultant-start.com/#series"><span class="i18n-ja">作品</span><span class="i18n-en" hidden>Series</span></a>
+        <a href="https://note.com/shiina_soichiro">note</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language / 言語切替">
+        <button type="button" id="btn-lang-ja" class="active" onclick="setLang('ja')">日本語</button>
+        <button type="button" id="btn-lang-en" onclick="setLang('en')">English</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <div class="hero">
   <div class="wrap">
     <div class="eyebrow">READERS' GIFT</div>
-    <h1>読者特典<br>ギャップ分析エクセルテンプレート</h1>
-    <p class="lead">
+    <h1>
+      <span class="i18n-ja">読者特典<br>ギャップ分析エクセルテンプレート</span>
+      <span class="i18n-en" hidden>Reader's Gift<br>Gap Analysis Excel Template</span>
+    </h1>
+    <p class="lead i18n-ja">
       『食品コンサル物語 実務編　FSSC22000 V7移行完全ガイド』を<br class="br-pc">
       お読みいただいた皆さまへ。本書の内容をそのまま実務に落とし込める<br class="br-pc">
       エクセルのギャップ分析テンプレートを、無料でご用意しました。
     </p>
-    <a class="btn btn-fill" href="FSSC22000_V7_gap_analysis_template.xlsx" download="FSSC22000_V7移行_ギャップ分析テンプレート.xlsx">
-      テンプレートをダウンロード（Excel）
+    <p class="lead i18n-en" hidden>
+      For everyone who has read <em>Food Consulting Story, Practical Edition: The Complete Guide to
+      FSSC22000 V7 Migration</em> — we've put together a free Excel gap analysis template that lets you
+      put the book's content straight to work on your own plant floor.
+    </p>
+    <a class="btn btn-fill" id="dl-btn"
+       href="FSSC22000_V7_gap_analysis_template.xlsx"
+       download="FSSC22000_V7移行_ギャップ分析テンプレート.xlsx">
+      <span class="i18n-ja">テンプレートをダウンロード（Excel）</span>
+      <span class="i18n-en" hidden>Download the Template (Excel)</span>
     </a>
-    <div class="btn-note">.xlsx形式／無料／登録不要</div>
+    <div class="btn-note">
+      <span class="i18n-ja">.xlsx形式／無料／登録不要</span>
+      <span class="i18n-en" hidden>.xlsx format / Free / No sign-up required</span>
+    </div>
   </div>
 </div>
 
 <section class="about-book">
   <div class="wrap">
-    <div class="section-title">このテンプレートについて</div>
+    <div class="section-title">
+      <span class="i18n-ja">このテンプレートについて</span>
+      <span class="i18n-en" hidden>About This Template</span>
+    </div>
     <div class="grid">
       <div>
-        <h3>本書と連動した実務ツール</h3>
-        <p>
+        <h3 class="i18n-ja">本書と連動した実務ツール</h3>
+        <h3 class="i18n-en" hidden>A Hands-On Tool Tied to the Book</h3>
+        <p class="i18n-ja">
           書籍で解説しているFSSC22000 V7移行の要求事項を、自社の現状と照らし合わせて
           チェックできるギャップ分析シートです。項目ごとに現状評価・課題・対応方針を
           記入するだけで、移行までにやるべきことが整理できます。
         </p>
+        <p class="i18n-en" hidden>
+          This is a gap analysis sheet that lets you check the FSSC22000 V7 migration requirements
+          covered in the book against your own organization's current state. Just fill in your current
+          assessment, the issues you find, and your response for each item, and you'll have a clear
+          picture of everything you need to do before migration.
+        </p>
       </div>
       <div>
-        <h3>集計は自動で計算</h3>
-        <p>
+        <h3 class="i18n-ja">集計は自動で計算</h3>
+        <h3 class="i18n-en" hidden>Automatic Summary Calculations</h3>
+        <p class="i18n-ja">
           各シートの評価結果は自動集計され、全体の進捗状況がひと目でわかります。
           プルダウンによる選択式入力にも対応しているので、現場のどなたでもすぐに
           使い始められます。
+        </p>
+        <p class="i18n-en" hidden>
+          Each sheet's evaluation results are tallied automatically, so you can see your overall
+          progress at a glance. Entries also support dropdown selection, so anyone on the floor can
+          start using it right away.
         </p>
       </div>
     </div>
@@ -243,8 +297,11 @@
 
 <section>
   <div class="wrap">
-    <div class="section-title">テンプレートの内容</div>
-    <ul class="contents-list">
+    <div class="section-title">
+      <span class="i18n-ja">テンプレートの内容</span>
+      <span class="i18n-en" hidden>What's in the Template</span>
+    </div>
+    <ul class="contents-list i18n-ja">
       <li><span class="num">4.1</span><span>PRP棚卸し — PRP文書の棚卸しとV7要求事項（ISO22002-100）との整合性確認</span></li>
       <li><span class="num">4.2</span><span>食品安全文化 — 食品安全文化が行動として根付いていることを示す証拠の確認</span></li>
       <li><span class="num">4.3</span><span>食品ロスKPI — 工程別の食品ロス測定とKPI設定</span></li>
@@ -252,27 +309,44 @@
       <li><span class="num">4.5</span><span>AI利用リスク評価 — AI利用時のリスク評価（AI未使用の場合は「該当なし」）</span></li>
       <li><span class="num">4.6</span><span>総合ギャップ分析 — 全テンプレートを統合した、移行準備の進捗一覧</span></li>
     </ul>
+    <ul class="contents-list i18n-en" hidden>
+      <li><span class="num">4.1</span><span>PRP Inventory — Take inventory of your PRP documents and check them against the V7 requirements (ISO 22002-100)</span></li>
+      <li><span class="num">4.2</span><span>Food Safety Culture — Check the evidence showing your food safety culture has taken root as actual behavior</span></li>
+      <li><span class="num">4.3</span><span>Food Loss KPI — Measure food loss by process and set your KPI</span></li>
+      <li><span class="num">4.4</span><span>Labeling Control — Confirm you're covering the expanded scope of labeling control (including labels outside the core process)</span></li>
+      <li><span class="num">4.5</span><span>AI Usage Risk Assessment — Assess the risk when AI is used (mark "Not Applicable" if you don't use AI)</span></li>
+      <li><span class="num">4.6</span><span>Master Gap Analysis — A consolidated view of your migration-readiness progress across every template</span></li>
+    </ul>
   </div>
 </section>
 
 <section class="about-book">
   <div class="wrap">
-    <div class="section-title">使い方</div>
+    <div class="section-title">
+      <span class="i18n-ja">使い方</span>
+      <span class="i18n-en" hidden>How to Use It</span>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="num-circle">1</div>
-        <h4>ダウンロード</h4>
-        <p>上のボタンからエクセルファイルを保存します。</p>
+        <h4 class="i18n-ja">ダウンロード</h4>
+        <h4 class="i18n-en" hidden>Download</h4>
+        <p class="i18n-ja">上のボタンからエクセルファイルを保存します。</p>
+        <p class="i18n-en" hidden>Save the Excel file using the button above.</p>
       </div>
       <div class="step">
         <div class="num-circle">2</div>
-        <h4>現状を記入</h4>
-        <p>本書第4章を参照しながら、各シートの現状評価を記入します。</p>
+        <h4 class="i18n-ja">現状を記入</h4>
+        <h4 class="i18n-en" hidden>Fill In Your Current State</h4>
+        <p class="i18n-ja">本書第4章を参照しながら、各シートの現状評価を記入します。</p>
+        <p class="i18n-en" hidden>Referring to Chapter 4 of the book, fill in the current-state assessment on each sheet.</p>
       </div>
       <div class="step">
         <div class="num-circle">3</div>
-        <h4>進捗を確認</h4>
-        <p>4.6総合ギャップ分析で全体の進捗状況を自動集計・確認できます。</p>
+        <h4 class="i18n-ja">進捗を確認</h4>
+        <h4 class="i18n-en" hidden>Check Your Progress</h4>
+        <p class="i18n-ja">4.6総合ギャップ分析で全体の進捗状況を自動集計・確認できます。</p>
+        <p class="i18n-en" hidden>The 4.6 Master Gap Analysis sheet automatically tallies and shows your overall progress.</p>
       </div>
     </div>
   </div>
@@ -280,29 +354,113 @@
 
 <div class="cta-block">
   <div class="wrap">
-    <div class="section-title">まだ本編をお読みでない方へ</div>
-    <p>
+    <div class="section-title">
+      <span class="i18n-ja">まだ本編をお読みでない方へ</span>
+      <span class="i18n-en" hidden>Haven't Read the Book Yet?</span>
+    </div>
+    <p class="i18n-ja">
       『食品コンサル物語 実務編　FSSC22000 V7移行完全ガイド』は、
       2028年4月30日の移行期限に向けた実践解説を、4フェーズのアクションプランで
       わかりやすくまとめています。
     </p>
-    <a class="btn" href="https://note.com/shiina_soichiro">note で読む</a>
+    <p class="i18n-en" hidden>
+      <em>Food Consulting Story, Practical Edition: The Complete Guide to FSSC22000 V7 Migration</em>
+      lays out a practical explanation for the April 30, 2028 migration deadline, organized clearly
+      into a four-phase action plan.
+    </p>
+    <a class="btn" href="https://note.com/shiina_soichiro">
+      <span class="i18n-ja">note で読む</span>
+      <span class="i18n-en" hidden>Read It on note</span>
+    </a>
   </div>
 </div>
 
 <div class="note-cta">
   <div class="wrap">
-    <p>その他のシリーズ最新話・実務解説記事は note で随時公開中です。</p>
-    <a class="btn" href="https://foodconsultant-start.com/">TheStart トップへ戻る</a>
+    <p class="i18n-ja">その他のシリーズ最新話・実務解説記事は note で随時公開中です。</p>
+    <p class="i18n-en" hidden>The latest episodes in the series, plus practical explainer articles, are published regularly on note.</p>
+    <a class="btn" href="https://foodconsultant-start.com/">
+      <span class="i18n-ja">TheStart トップへ戻る</span>
+      <span class="i18n-en" hidden>Back to The Start Home</span>
+    </a>
   </div>
 </div>
 
 <footer>
   <div class="wrap">
-    「さぁ、これからがスタートだ！」— 椎名宗一郎<br>
-    © 椎名宗一郎／食品コンサル物語 The Start　All Rights Reserved
+    <span class="i18n-ja">「さぁ、これからがスタートだ！」— 椎名宗一郎<br>
+    © 椎名宗一郎／食品コンサル物語 The Start　All Rights Reserved</span>
+    <span class="i18n-en" hidden>&ldquo;All right, this is where it starts!&rdquo; — Soichiro Shiina<br>
+    &copy; Soichiro Shiina / Food Consulting Story: The Start. All Rights Reserved.</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var DL = {
+    ja: {
+      href: 'FSSC22000_V7_gap_analysis_template.xlsx',
+      download: 'FSSC22000_V7移行_ギャップ分析テンプレート.xlsx'
+    },
+    en: {
+      href: 'FSSC22000_V7_gap_analysis_template_EN.xlsx',
+      download: 'FSSC22000_V7_Migration_Gap_Analysis_Template.xlsx'
+    }
+  };
+  var TITLE = {
+    ja: '読者特典｜FSSC22000 V7移行ガイド ギャップ分析テンプレート - TheStart 食品コンサル物語',
+    en: "Reader's Gift | FSSC22000 V7 Migration Guide Gap Analysis Template - TheStart: A Food Consulting Story"
+  };
+  var DESC = {
+    ja: '『食品コンサル物語 実務編 FSSC22000 V7移行完全ガイド』読者特典。実務でそのまま使えるギャップ分析エクセルテンプレートを無料でダウンロードいただけます。',
+    en: "A reader's gift for ‘Food Consulting Story, Practical Edition: The Complete Guide to FSSC22000 V7 Migration.’ Download a ready-to-use gap analysis Excel template for free."
+  };
+
+  function setLang(lang){
+    var body = document.body;
+    body.setAttribute('data-lang', lang);
+    document.getElementById('html-root').setAttribute('lang', lang === 'en' ? 'en' : 'ja');
+
+    var jaEls = document.querySelectorAll('.i18n-ja');
+    var enEls = document.querySelectorAll('.i18n-en');
+    for (var i = 0; i < jaEls.length; i++) jaEls[i].hidden = (lang === 'en');
+    for (var j = 0; j < enEls.length; j++) enEls[j].hidden = (lang !== 'en');
+
+    document.getElementById('btn-lang-ja').classList.toggle('active', lang !== 'en');
+    document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
+
+    var dl = document.getElementById('dl-btn');
+    dl.setAttribute('href', DL[lang].href);
+    dl.setAttribute('download', DL[lang].download);
+
+    document.getElementById('page-title').textContent = TITLE[lang];
+    document.getElementById('page-desc').setAttribute('content', DESC[lang]);
+    document.title = TITLE[lang];
+
+    try {
+      var params = new URLSearchParams(window.location.search);
+      params.set('lang', lang);
+      var newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
+      window.history.replaceState(null, '', newUrl);
+    } catch (e) { /* no-op if History API unavailable */ }
+  }
+  window.setLang = setLang;
+
+  // Determine initial language: explicit ?lang= wins, otherwise fall back to
+  // the visitor's browser language, defaulting to Japanese.
+  var initial = 'ja';
+  try {
+    var qp = new URLSearchParams(window.location.search).get('lang');
+    if (qp === 'en' || qp === 'ja') {
+      initial = qp;
+    } else if ((navigator.language || '').toLowerCase().indexOf('en') === 0) {
+      initial = 'en';
+    }
+  } catch (e) { /* keep default */ }
+
+  setLang(initial);
+})();
+</script>
 
 </body>
 </html>
